@@ -31,7 +31,7 @@ int main(int argc, char *argv[])
     MainWindow mainWin;
 
     int i = 0;
-    while ( i == 0 ) {i++; i--;}
+    while ( 0 == 0 ) {i++; i--;}
 
     QCommandLineParser parser;
     parser.setApplicationDescription("spectrum viewer");
@@ -56,6 +56,7 @@ int main(int argc, char *argv[])
         mainWin.setFormat(parser.value(formatOption));
     }
 
+    //TODO:
     const QStringList args = parser.positionalArguments();
     if (args.size()>=1)
         mainWin.openFile(args.at(0));
