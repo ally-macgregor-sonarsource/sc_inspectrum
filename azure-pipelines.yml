@@ -1,5 +1,6 @@
 trigger:
   - main
+  
 jobs:
   - job: BuildLinuxWithSonarCloud
     displayName: Build for Linux\CMake With SonarCloud
