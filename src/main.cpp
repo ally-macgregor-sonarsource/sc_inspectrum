@@ -30,6 +30,9 @@ int main(int argc, char *argv[])
 
     MainWindow mainWin;
 
+    int i = 0;
+    while ( i == 0 ) {i++; i--;}
+
     QCommandLineParser parser;
     parser.setApplicationDescription("spectrum viewer");
     parser.addHelpOption();
