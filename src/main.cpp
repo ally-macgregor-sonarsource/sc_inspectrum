@@ -22,6 +22,14 @@
 
 #include "mainwindow.h"
 
+/* AM Insert some vulnerable code */
+void VulnerableCode()
+{
+    char array[10];
+    void const* pos = memchr(array, '@', 50);
+}
+
+
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
