@@ -29,17 +29,26 @@ void VulnerableCode()
     void const* pos = memchr(array, '@', 50);
 }
 
-
 int main(int argc, char *argv[])
 {
+    //case 00024050 test
+    int const test_var = 4;
+    if (test_var == 4)
+        printf("In\n");
+    else
+        printf("Out\n");
+
+    if (1)
+        printf("In\n");
+    else
+        printf("Out\n");
+
+    
     QApplication a(argc, argv);
     a.setApplicationName("inspectrum");
     a.setOrganizationName("inspectrum");
 
     MainWindow mainWin;
-
-    int i = 0;
-    while ( 0 == 0 ) {i++; i--;}
 
     QCommandLineParser parser;
     parser.setApplicationDescription("spectrum viewer");
@@ -52,22 +61,18 @@ int main(int argc, char *argv[])
                                   QCoreApplication::translate("main", "Hz"));
     parser.addOption(rateOption);
     QCommandLineOption formatOption(QStringList() << "f" << "format",
-                                  QCoreApplication::translate("main", "Set file format, options: cfile/cf32/fc32, cf64/fc64, cs32/sc32/c32, cs16/sc16/c16, cs8/sc8/c8, cu8/uc8, f32, f64, s16, s8, u8, sigmf-meta/sigmf-data."),
+                                  QCoreApplication::translate("main", "Set file format."),
                                   QCoreApplication::translate("main", "fmt"));
     parser.addOption(formatOption);
 
     // Process the actual command line
     parser.process(a);
-    
-    char array[10];
-    void const* pos = memchr(array, '@', 50);
  
     // Check for file format override   
     if(parser.isSet(formatOption)){
         mainWin.setFormat(parser.value(formatOption));
     }
 
-    //TODO:
     const QStringList args = parser.positionalArguments();
     if (args.size()>=1)
         mainWin.openFile(args.at(0));
