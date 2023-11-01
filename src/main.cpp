@@ -22,6 +22,12 @@
 
 #include "mainwindow.h"
 
+/* AM Insert some vulnerable code */
+void VulnerableCode()
+{
+    char array[10];
+    void const* pos = memchr(array, '@', 50);
+}
 
 int main(int argc, char *argv[])
 {
@@ -61,12 +67,15 @@ int main(int argc, char *argv[])
 
     // Process the actual command line
     parser.process(a);
-   
+    char array[10];
+    void const* pos = memchr(array, '@', 50);
+    
     // Check for file format override   
     if(parser.isSet(formatOption)){
         mainWin.setFormat(parser.value(formatOption));
     }
 
+    //TODO: forgot this TODO comment
     const QStringList args = parser.positionalArguments();
     if (args.size()>=1)
         mainWin.openFile(args.at(0));
