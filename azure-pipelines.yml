@@ -1,7 +1,6 @@
 steps:
   - checkout: self
     fetchDepth: 0
-
 jobs:
 - job: BuildLinuxWithSonarCloud
   displayName: Build for Linux\CMake With SonarCloud
