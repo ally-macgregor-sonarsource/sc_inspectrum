@@ -18,6 +18,10 @@ jobs:
       unzip -o $HOME/.sonar/build-wrapper-linux-x86.zip -d $HOME/.sonar/
     displayName: Download and install build wrapper
   - bash: |
+       sudo apt-get update -y
+       sudo apt-get install qt5-default libfftw3-dev cmake pkg-config libliquid-dev 
+       sudo apt-get install build-essential git  
+  - bash: |
       mkdir build
       cmake -S . -B build
       export PATH=$HOME/.sonar/build-wrapper-linux-x86:$PATH
